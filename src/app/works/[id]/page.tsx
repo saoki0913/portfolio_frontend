@@ -8,11 +8,9 @@ import { TechIcon } from '@/components/works/TechIcon';
 import { getWorkById, getAllWorks } from '@/lib/api/works';
 
 // Next.js 15.2.4の型定義に合わせる
-interface PageProps {
-    params: {
-        id: string;
-    };
-}
+type Props = {
+    params: Promise<{ id: string }>
+};
 
 export async function generateStaticParams() {
     try {
@@ -26,9 +24,10 @@ export async function generateStaticParams() {
     }
 }
 
-export default async function WorkPage({ params }: PageProps) {
+export default async function WorkPage({ params }: Props) {
     let work;
-    const id = params.id;
+    const resolvedParams = await params; // { id: string } 型になる
+    const id = resolvedParams.id;
 
     try {
         work = await getWorkById(id);
