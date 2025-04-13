@@ -1,20 +1,18 @@
 import apiClient from './client';
 import { About } from '../types/about';
 
-/**
- * About情報を取得する
- */
+
 export const getAboutInfo = async (): Promise<About> => {
     try {
-        console.log('Fetching about info...');
+        console.log('About情報の取得を開始します...');
         const response = await apiClient.get<About>('/about');
-        console.log('About info response:', response);
+        console.log('About情報の取得が完了しました:', response);
         return response.data;
     } catch (error) {
-        console.error('Error fetching about data:', error);
+        console.error('Aboutの情報の取得に失敗しました:', error);
         // エラー時はデフォルトデータを返す（UXを損なわないため）
         return {
-            name: "青木 俊輔",
+            name: "青木 駿介",
             title: "AIエンジニア / バックエンド開発者",
             summary: "早稲田大学創造理工学研究科の修士1年生として、AIロボティクスの研究に従事。長期インターンでWebエンジニアとしてAIを活用したwebアプリケーション開発に努める。",
             profile_image: "/profile.jpg",

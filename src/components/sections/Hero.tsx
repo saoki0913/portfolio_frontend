@@ -91,7 +91,7 @@ export const Hero = () => {
                                 <span className="ml-2 text-xs text-gray-500 normal-case font-normal">スクロールして詳細を見る</span>
                             </h3>
                             <div className="relative animate-fade-in-up animate-delay-800 max-h-[35vh] md:max-h-[45vh] overflow-y-auto pr-4 no-scrollbar">
-                                <div className="absolute top-0 bottom-[-240px] left-[6px] w-[1px] bg-gray-800"></div>
+                                <div className="absolute top-0 bottom-[-300px] left-[6px] w-[1px] bg-gray-800"></div>
 
                                 {data.timelineItems && data.timelineItems.map((item) => (
                                     <div key={item.id} className="mb-4 md:mb-5 relative pl-12 group">
