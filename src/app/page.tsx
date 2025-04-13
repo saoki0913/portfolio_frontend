@@ -145,7 +145,7 @@ export default function Home() {
               <div className="water-drop-ripple"></div>
               <div className="text-center px-8 relative z-10">
                 <h1 className="text-6xl md:text-7xl font-bold text-gray-800 mb-3 animate-tracking-in-expand">
-                  AOKI's
+                  AOKI&apos;s
                 </h1>
                 <h2 className="text-5xl md:text-6xl font-bold text-gray-700 animate-tracking-in-expand" style={{ animationDelay: '400ms' }}>
                   Portfolio

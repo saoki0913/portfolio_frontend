@@ -1,134 +1,6 @@
-# ポートフォリオサイト
+# ポートフォリオサイト フロントエンド
 
-早稲田大学創造理工学研究科の修士1年生、青木俊介のポートフォリオサイトです。AIロボティクスの研究とWebエンジニアとしての経験を紹介しています。
-
-## システム構成
-
-このプロジェクトは、フロントエンドとバックエンドで構成される完全なフルスタックアプリケーションです。
-
-### フロントエンド
-
-- **フレームワーク**: Next.js 15.2.4
-- **言語**: TypeScript
-- **スタイリング**: Tailwind CSS
-- **フォーム管理**: React Hook Form
-- **バリデーション**: Zod
-- **UIコンポーネント**: Radix UI
-- **アニメーション**: tw-animate-css
-
-### バックエンド
-
-- **フレームワーク**: FastAPI 0.115.12
-- **言語**: Python 3.10
-- **データベース**: SQLAlchemy 2.0.40
-- **サーバー**: Uvicorn 0.34.0
-- **環境変数管理**: python-dotenv 1.0.1
-- **コンテナ化**: Docker
-
-## プロジェクト構造
-
-```
-portfolio/
-├── frontend/              # フロントエンドアプリケーション
-│   ├── src/
-│   │   ├── app/          # Next.js アプリケーション
-│   │   │   ├── works/    # プロジェクト詳細ページ
-│   │   │   ├── page.tsx  # メインページ
-│   │   │   └── layout.tsx # レイアウト
-│   │   ├── components/   # コンポーネント
-│   │   │   ├── sections/ # メインページのセクション
-│   │   │   └── ui/      # 共通UIコンポーネント
-│   │   └── lib/         # ユーティリティ関数
-│   └── package.json
-│
-└── backend/              # バックエンドアプリケーション
-    ├── main.py          # メインアプリケーション
-    ├── requirements.txt # Pythonパッケージ依存関係
-    ├── Dockerfile       # Dockerコンテナ設定
-    └── .env            # 環境変数
-```
-
-## 主な機能
-
-- レスポンシブデザイン
-- プロジェクト詳細ページ
-- コンタクトフォーム（メール送信機能付き）
-- スキルセクションのアニメーション
-- ソーシャルメディアリンク
-- RESTful API エンドポイント
-  - `/api/projects`: プロジェクト一覧の取得
-  - `/api/skills`: スキル一覧の取得
-  - `/api/contact`: コンタクトフォームの送信
-
-## 開発環境のセットアップ
-
-### フロントエンド
-
-1. 依存関係のインストール:
-```bash
-cd frontend
-npm install
-```
-
-2. 開発サーバーの起動:
-```bash
-npm run dev
-```
-
-### バックエンド
-
-1. Python仮想環境の作成と有効化:
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # Linuxの場合
-venv\Scripts\activate     # Windowsの場合
-```
-
-2. 依存関係のインストール:
-```bash
-pip install -r requirements.txt
-```
-
-3. 環境変数の設定:
-```bash
-cp .env.example .env
-# .envファイルを編集して必要な環境変数を設定
-```
-
-4. 開発サーバーの起動:
-```bash
-uvicorn main:app --reload
-```
-
-### Dockerを使用する場合
-
-```bash
-cd backend
-docker build -t portfolio-backend .
-docker run -p 8000:8000 portfolio-backend
-```
-
-## デプロイ
-
-### フロントエンド
-```bash
-cd frontend
-npm run build
-npm start
-```
-
-### バックエンド
-```bash
-cd backend
-uvicorn main:app --host 0.0.0.0 --port 8000
-```
-
-## ライセンス
-
-# ポートフォリオサイト
-
-早稲田大学創造理工学研究科の修士1年生、青木俊介のポートフォリオサイトです。AIロボティクスの研究とWebエンジニアとしての経験を紹介しています。
+早稲田大学創造理工学研究科の修士1年生、青木俊介のポートフォリオサイトのフロントエンドプロジェクトです。AIロボティクスの研究とWebエンジニアとしての経験を紹介します。
 
 ## 技術スタック
 
@@ -139,6 +11,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 - **バリデーション**: Zod
 - **UIコンポーネント**: Radix UI
 - **アニメーション**: tw-animate-css
+- **APIクライアント**: Axios
 
 ## プロジェクト構造
 
@@ -146,6 +19,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 src/
 ├── app/                    # Next.js アプリケーション
 │   ├── works/             # プロジェクト詳細ページ
+│   │   └── [id]/          # 動的ルーティング
 │   ├── page.tsx           # メインページ
 │   ├── layout.tsx         # レイアウト
 │   └── globals.css        # グローバルスタイル
@@ -157,40 +31,81 @@ src/
 │   │   ├── Works.tsx     # プロジェクト一覧
 │   │   ├── Skills.tsx    # スキルセクション
 │   │   └── Contact.tsx   # コンタクトフォーム
+│   ├── works/            # プロジェクト詳細コンポーネント
+│   │   ├── HeroSection.tsx
+│   │   ├── ProjectInfo.tsx
+│   │   ├── Screenshots.tsx
+│   │   └── TechIcon.tsx
 │   └── ui/               # 共通UIコンポーネント
 └── lib/                  # ユーティリティ関数
+    ├── api/              # APIクライアント
+    │   ├── client.ts     # Axiosクライアント設定
+    │   ├── works.ts      # プロジェクトAPI
+    │   ├── skills.ts     # スキルAPI
+    │   ├── about.ts      # 自己紹介API
+    │   ├── hero.ts       # ヒーローセクションAPI
+    │   └── contact.ts    # コンタクトフォームAPI
+    ├── types/            # 型定義
+    └── utils/            # ユーティリティ関数
+
 ```
 
 ## 主な機能
 
-- レスポンシブデザイン
-- プロジェクト詳細ページ
-- コンタクトフォーム
-- スキルセクションのアニメーション
+- レスポンシブデザイン - モバイルからデスクトップまで対応
+- ダークモード対応
+- プロジェクト詳細ページ - 各プロジェクトの詳細情報表示
+- 動的データフェッチング - バックエンドAPIからデータを取得
+- コンタクトフォーム - バリデーション機能付き
+- スムーズなスクロールアニメーション
+- スキルセクションのインタラクティブな表示
 - ソーシャルメディアリンク
+
+## 環境変数設定
+
+`.env.local`ファイルに以下の環境変数を設定してください：
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
 ## 開発環境のセットアップ
 
 1. 依存関係のインストール:
 ```bash
 npm install
+# または
+yarn install
 ```
 
 2. 開発サーバーの起動:
 ```bash
 npm run dev
+# または
+yarn dev
 ```
 
-3. ビルド:
+フロントエンドは`http://localhost:3000`で動作します。
+
+## ビルドと本番環境
+
 ```bash
+# ビルド
 npm run build
-```
+# または
+yarn build
 
-4. 本番環境での起動:
-```bash
+# 本番環境での起動
 npm start
+# または
+yarn start
 ```
 
-## ライセンス
+## デプロイ
 
-このプロジェクトはプライベートです。無断での使用・複製を禁止します。
+このプロジェクトはVercelへのデプロイを推奨します：
+
+1. [Vercel](https://vercel.com)にアカウントを作成
+2. リポジトリを接続
+3. 環境変数を設定
+4. デプロイ
