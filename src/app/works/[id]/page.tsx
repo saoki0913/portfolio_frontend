@@ -7,7 +7,6 @@ import { Screenshots } from '@/components/works/Screenshots';
 import { TechIcon } from '@/components/works/TechIcon';
 import { getWorkById, getAllWorks } from '@/lib/api/works';
 
-// Next.js 15.2.4の型定義に合わせる
 type Props = {
     params: Promise<{ id: string }>
 };
@@ -26,7 +25,7 @@ export async function generateStaticParams() {
 
 export default async function WorkPage({ params }: Props) {
     let work;
-    const resolvedParams = await params; // { id: string } 型になる
+    const resolvedParams = await params;
     const id = resolvedParams.id;
 
     try {

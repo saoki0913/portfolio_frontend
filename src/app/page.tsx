@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Header } from '@/components/sections/Header'
 import { Hero } from '@/components/sections/Hero'
@@ -10,7 +10,8 @@ import { Skills } from '@/components/sections/Skills'
 import { Contact } from '@/components/sections/Contact'
 import 'tw-animate-css'
 
-export default function Home() {
+// SearchParamsを使用するコンポーネントを分離
+function HomeContent() {
   const [isLoading, setIsLoading] = useState(true)
   const [fadeOut, setFadeOut] = useState(false)
   const [showContent, setShowContent] = useState(false)
@@ -182,5 +183,26 @@ export default function Home() {
         </div>
       </main>
     </div>
+  )
+}
+
+// ローディング表示用のフォールバックコンポーネント
+function HomeFallback() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <div className="flex space-x-6">
+        <div className="w-4 h-4 bg-gray-600 rounded-full animate-pulse"></div>
+        <div className="w-4 h-4 bg-gray-600 rounded-full animate-pulse" style={{ animationDelay: '200ms' }}></div>
+        <div className="w-4 h-4 bg-gray-600 rounded-full animate-pulse" style={{ animationDelay: '400ms' }}></div>
+      </div>
+    </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<HomeFallback />}>
+      <HomeContent />
+    </Suspense>
   )
 }
