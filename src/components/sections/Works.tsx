@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const Works = () => {
     return (
@@ -7,11 +8,13 @@ export const Works = () => {
                 <h2 className="text-3xl md:text-4xl font-medium mb-12 md:mb-20">Works</h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                     <Link href="/works/portfolio" className="group">
-                        <div className="aspect-[1/1] mb-4 md:mb-5 overflow-hidden rounded-lg">
-                            <img
+                        <div className="aspect-[1/1] mb-4 md:mb-5 overflow-hidden rounded-lg relative">
+                            <Image
                                 src="/works/portfolio.png"
                                 alt="Portfolio"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                         </div>
                         <h3 className="text-lg md:text-xl font-medium mb-2">ポートフォリオ</h3>
@@ -19,11 +22,13 @@ export const Works = () => {
                     </Link>
 
                     <Link href="/works/azure-rag" className="group">
-                        <div className="aspect-[1/1] mb-4 md:mb-5 overflow-hidden rounded-lg">
-                            <img
-                                src="works/azure_rag.png"
+                        <div className="aspect-[1/1] mb-4 md:mb-5 overflow-hidden rounded-lg relative">
+                            <Image
+                                src="/works/azure_rag.png"
                                 alt="AI Chat System"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                         </div>
                         <h3 className="text-lg md:text-xl font-medium mb-2">Azure AIサービスを利用したRAG</h3>
@@ -33,11 +38,13 @@ export const Works = () => {
                     </Link>
 
                     <Link href="/works/schedule-management" className="group">
-                        <div className="aspect-[1/1] mb-4 md:mb-5 overflow-hidden rounded-lg">
-                            <img
+                        <div className="aspect-[1/1] mb-4 md:mb-5 overflow-hidden rounded-lg relative">
+                            <Image
                                 src="/works/schedule_management.png"
                                 alt="Schedule Management"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                         </div>
                         <h3 className="text-lg md:text-xl font-medium mb-2">スケジュール管理アプリ</h3>
