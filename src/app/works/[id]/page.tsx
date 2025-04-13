@@ -7,11 +7,12 @@ import { Screenshots } from '@/components/works/Screenshots';
 import { TechIcon } from '@/components/works/TechIcon';
 import { getWorkById, getAllWorks } from '@/lib/api/works';
 
-type Props = {
+// Next.js 15.2.4の型定義に合わせる
+interface PageProps {
     params: {
         id: string;
     };
-};
+}
 
 export async function generateStaticParams() {
     try {
@@ -25,10 +26,9 @@ export async function generateStaticParams() {
     }
 }
 
-export default async function WorkPage({ params }: Props) {
+export default async function WorkPage({ params }: PageProps) {
     let work;
-    const resolvedParams = await Promise.resolve(params);
-    const id = resolvedParams.id;
+    const id = params.id;
 
     try {
         work = await getWorkById(id);
