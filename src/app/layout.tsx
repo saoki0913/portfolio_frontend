@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Aoki's Portfolio",
   description: "早稲田大学創造理工学研究科の青木駿介のポートフォリオサイト。AIロボティクス研究とWebエンジニアとしての作品を紹介。",
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({
