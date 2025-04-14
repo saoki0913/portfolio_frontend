@@ -18,7 +18,6 @@ export const Works = () => {
                             />
                         </div>
                         <h3 className="text-lg md:text-xl font-medium mb-2">ポートフォリオ</h3>
-                        <p className="text-sm text-gray-600">Next.js, TypeScript, Tailwind CSS</p>
                     </Link>
 
                     <Link href="/works/azure-rag" className="group">
@@ -32,9 +31,6 @@ export const Works = () => {
                             />
                         </div>
                         <h3 className="text-lg md:text-xl font-medium mb-2">Azure AIサービスを利用したRAG</h3>
-                        <p className="text-sm text-gray-600">Azure OpenAI, Azure AI Search, Azure functions, Azure Static Web apps, Azure Cosmos DB, Microsoft Graph API, React, FastAPI, MUI,
-                            TypeScript, Python
-                        </p>
                     </Link>
 
                     <Link href="/works/schedule-management" className="group">
@@ -48,7 +44,6 @@ export const Works = () => {
                             />
                         </div>
                         <h3 className="text-lg md:text-xl font-medium mb-2">スケジュール管理アプリ</h3>
-                        <p className="text-sm text-gray-600">Azure functions, Azure Static Web apps, Azure Cosmos DB, Microsoft Graph API, Next.js, FastAPI, Tailwind CSS</p>
                     </Link>
                 </div>
             </div>
