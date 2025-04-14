@@ -16,8 +16,6 @@ export const Header = () => {
 
     // 最初の表示時やリサイズ時に初期セクションを設定
     useEffect(() => {
-        let timer: NodeJS.Timeout
-
         // スクロール時の背景変更処理とアクティブセクション検出
         const handleScroll = () => {
             const offset = window.scrollY
@@ -66,7 +64,7 @@ export const Header = () => {
         }
 
         // DOMの読み込み完了を待機してスクロール処理を初期化
-        timer = setTimeout(() => {
+        const timer = setTimeout(() => {
             handleScroll() // 初期状態を設定
             window.addEventListener('scroll', handleScroll)
         }, 300)
