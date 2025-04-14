@@ -28,7 +28,7 @@ export const About = () => {
     // ローディング中の表示
     if (loading) {
         return (
-            <section id="about" className="mt-24 md:mt-28 py-12 md:py-20 px-4 md:px-6 bg-gray-50">
+            <section id="about" className="mt-24 md:mt-32 py-12 md:py-20 px-4 md:px-6 bg-gray-50">
                 <div className="container mx-auto">
                     <h2 className="text-3xl md:text-4xl font-medium mb-12 md:mb-20">About</h2>
                     <div className="grid md:grid-cols-2 gap-8 md:gap-16">
@@ -54,7 +54,7 @@ export const About = () => {
     // エラー時の表示
     if (error || !aboutData) {
         return (
-            <section id="about" className="mt-24 md:mt-28 py-12 md:py-20 px-4 md:px-6 bg-gray-50">
+            <section id="about" className="mt-24 md:mt-32 py-12 md:py-20 px-4 md:px-6 bg-gray-50">
                 <div className="container mx-auto">
                     <h2 className="text-3xl md:text-4xl font-medium mb-12 md:mb-20">About</h2>
                     <div className="p-4 bg-red-100 text-red-700 rounded-lg">
@@ -77,7 +77,7 @@ export const About = () => {
     })
 
     return (
-        <section id="about" className="mt-24 md:mt-28 py-12 md:py-20 px-4 md:px-6 bg-gray-50">
+        <section id="about" className="mt-24 md:mt-32 py-12 md:py-20 px-4 md:px-6 bg-gray-50">
             <div className="container mx-auto">
                 <h2 className="text-3xl md:text-4xl font-medium mb-12 md:mb-20">About</h2>
 

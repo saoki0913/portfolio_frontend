@@ -5,15 +5,19 @@ import { useState, useEffect, useRef } from 'react'
 import 'tw-animate-css'
 
 export const Header = () => {
+    const [activeSection, setActiveSection] = useState('hero')
     const [scrolled, setScrolled] = useState(false)
-    const [activeSection, setActiveSection] = useState('')
+
     const isManualScrolling = useRef(false)
     const scrollingTimeout = useRef<NodeJS.Timeout | null>(null)
 
-    // セクションオフセットの調整値
-    const SCROLL_OFFSET = 20
+    // ヘッダーのスクロールオフセット
+    const SCROLL_OFFSET = 40 // 以前の20から40に増加
 
+    // 最初の表示時やリサイズ時に初期セクションを設定
     useEffect(() => {
+        let timer: NodeJS.Timeout
+
         // スクロール時の背景変更処理とアクティブセクション検出
         const handleScroll = () => {
             const offset = window.scrollY
@@ -62,7 +66,7 @@ export const Header = () => {
         }
 
         // DOMの読み込み完了を待機してスクロール処理を初期化
-        const timer = setTimeout(() => {
+        timer = setTimeout(() => {
             handleScroll() // 初期状態を設定
             window.addEventListener('scroll', handleScroll)
         }, 300)
